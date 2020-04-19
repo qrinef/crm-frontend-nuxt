@@ -6,7 +6,6 @@ build:
   variables:
     REGISTRY: registry.gitlab.com/qrinef/crm-frontend-nuxt
   script:
-    - echo "$REGISTRY_LOGIN"
-    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN --password-stdin
+    - echo "$REGISTRY_TOKEN" | docker login -u "$REGISTRY_LOGIN" "$CI_REGISTRY" --password-stdin
     - docker build -t $REGISTRY .
     - docker push $REGISTRY
