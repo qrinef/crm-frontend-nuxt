@@ -4,8 +4,8 @@ build:
   services:
     - docker:dind
   variables:
-    REPOSITORY: registry.gitlab.com/qrinef/crm-frontend-nuxt
+    REGISTRY: registry.gitlab.com/qrinef/crm-frontend-nuxt
   script:
-    - docker login registry.gitlab.com -u $REGISTRY_LOGIN -p REGISTRY_TOKEN
-    - docker build -t $REPOSITORY .
-    - docker push $REPOSITORY
+    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN --password-stdin
+    - docker build -t $REGISTRY .
+    - docker push $REGISTRY
