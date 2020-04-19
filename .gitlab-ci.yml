@@ -1,0 +1,11 @@
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    REPOSITORY: registry.gitlab.com/qrinef/crm-frontend-nuxt
+  script:
+    - docker login registry.gitlab.com
+    - docker build -t $REPOSITORY .
+    - docker push $REPOSITORY
