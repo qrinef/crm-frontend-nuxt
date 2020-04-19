@@ -4,8 +4,8 @@ build:
   services:
     - docker:dind
   variables:
-    REGISTRY: registry.gitlab.com/qrinef/crm-frontend-nuxt
+    IMAGE: registry.gitlab.com/qrinef/crm-frontend-nuxt
   script:
-    - echo "$REGISTRY_TOKEN" | docker login -u "$REGISTRY_LOGIN" "$CI_REGISTRY" --password-stdin
-    - docker build -t $REGISTRY .
-    - docker push $REGISTRY
+    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN $CI_REGISTRY --password-stdin
+    - docker build -t $IMAGE -f .docker/Dockerfile .
+    - docker push $IMAGE
