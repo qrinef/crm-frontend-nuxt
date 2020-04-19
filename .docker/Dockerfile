@@ -1,6 +1,6 @@
 FROM node:13-alpine
 
-RUN apk --no-cache add python make git
+RUN apk --no-cache add python make g++ git
 
 WORKDIR /app
 
