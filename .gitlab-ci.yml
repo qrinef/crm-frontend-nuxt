@@ -1,14 +1,11 @@
-deploy:
-  stage: deploy
-  image: tiangolo/docker-with-compose:latest
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
   variables:
-    DOCKER_HOST: tcp://91.210.168.214:2376
-    DOCKER_TLS_VERIFY: 1
-    DOCKER_CERT_PATH: "/certs"
+    IMAGE: registry.gitlab.com/qrinef/crm-frontend-nuxt
   script:
-    - mkdir -p $DOCKER_CERT_PATH
-    - echo "$TLSCACERT" > $DOCKER_CERT_PATH/ca.pem
-    - echo "$TLSCERT" > $DOCKER_CERT_PATH/cert.pem
-    - echo "$TLSKEY" > $DOCKER_CERT_PATH/key.pem
-    - docker-compose pull
-    - docker-compose up -d
+    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN $CI_REGISTRY --password-stdin
+    - docker build -t $IMAGE -f .docker/Dockerfile .
+    - docker push $IMAGE
