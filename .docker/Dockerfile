@@ -1,4 +1,4 @@
-FROM node:13-alpine
+FROM node:13-alpine AS node
 
 RUN apk --no-cache add python make g++ git
 
