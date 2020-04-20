@@ -3,6 +3,8 @@ version: "3"
 services:
   app:
     image: registry.gitlab.com/qrinef/crm-frontend-nuxt:latest
-    working_dir: /usr/share/nginx/html
-    ports:
-      - 80:80
+    expose:
+      - 3000
+    environment:
+      VIRTUAL_HOST: test7.qrinef.ru
+      VIRTUAL_PORT: 3000
