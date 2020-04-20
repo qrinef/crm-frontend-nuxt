@@ -1,6 +1,6 @@
-FROM node:13-alpine AS node
+FROM node:12-alpine
 
-RUN apk --no-cache add python make g++ git
+RUN apk --no-cache add git
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-CMD ["npm", "run", "start"]
+CMD npm start
