@@ -1,15 +1,3 @@
-build:
-  stage: build
-  image: docker:latest
-  services:
-    - docker:dind
-  variables:
-    IMAGE: registry.gitlab.com/qrinef/crm-frontend-nuxt
-  script:
-    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN $CI_REGISTRY --password-stdin
-    - docker build -t $IMAGE -f .docker/Dockerfile .
-    - docker push $IMAGE
-
 deploy:
   stage: deploy
   image: tiangolo/docker-with-compose:latest
