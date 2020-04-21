@@ -1,6 +1,9 @@
 FROM node:13-alpine
 
-RUN apk --no-cache add python make g++ git
+ARG API_URL
+ENV API_URL=$API_URL
+
+RUN apk --no-cache add git
 
 WORKDIR /app
 
