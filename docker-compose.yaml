@@ -7,7 +7,7 @@ services:
     expose:
       - 3000
     environment:
-      VIRTUAL_HOST: test7.qrinef.ru
+      VIRTUAL_HOST: crm-frontend-nuxt.qrinef.ru
       VIRTUAL_PORT: 3000
 
 networks:
