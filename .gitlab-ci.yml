@@ -3,9 +3,10 @@ build:
   image: docker:latest
   services:
     - docker:dind
-  variables:
-    IMAGE: registry.gitlab.com/qrinef/crm-frontend-nuxt
+  environment:
+    name: production
+    url: https://crm-backend-nest.qrinef.ru
   script:
-    - echo "$REGISTRY_TOKEN" | docker login -u $REGISTRY_LOGIN $CI_REGISTRY --password-stdin
-    - docker build -t $IMAGE -f .docker/Dockerfile .
-    - docker push $IMAGE
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build --build-arg API_URL=$CI_ENVIRONMENT_URL -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
