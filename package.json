@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
     "element-ui": "^2.4.11",
+    "jwt-decode": "^2.2.0",
     "nuxt": "^2.0.0",
     "vuedraggable": "^2.23.2",
     "vuex-map-fields": "^1.4.0"

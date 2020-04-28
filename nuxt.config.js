@@ -54,31 +54,23 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.API_URL
+    baseURL: process.env.API_URL,
+    credentials: true
   },
 
   auth: {
+    plugins: ['@/plugins/auth.js'],
+    localStorage: false,
     strategies: {
       local: {
         _scheme: 'refresh',
-        token: {
-          maxAge: 36000000
-        },
-        refreshToken: {
-          maxAge: 36000000
-        },
-        user: {
-          property: 'data'
-        },
-        clientId: false,
-        grantType: false,
         autoRefresh: true,
         autoLogout: true,
         endpoints: {
           login: { url: '/auth/login', method: 'post' },
           refresh: { url: '/auth/refresh', method: 'post' },
-          user: { url: '/profile', method: 'get' },
-          logout: { url: '/auth/logout', method: 'post' }
+          logout: { url: '/auth/logout', method: 'post' },
+          user: false
         }
       }
     }

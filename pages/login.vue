@@ -29,8 +29,8 @@ export default {
   layout: 'login',
   data: () => ({
     login: {
-      email: 'john',
-      password: 'changeme'
+      email: 'admin@example.com',
+      password: 'password'
     },
     error: {
       isActive: false,
@@ -56,6 +56,7 @@ export default {
         if (valid) {
           try {
             await this.$auth.loginWith('local', { data: this.login })
+            this.$auth.setUser({ test: '11' })
           } catch ({ response: { status } }) {
             if (status === 401) {
               this.error.isActive = true
