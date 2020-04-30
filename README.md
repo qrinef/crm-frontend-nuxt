@@ -1,6 +1,6 @@
 ## Live demo
 
-> This demo app is deployed at [crm-frontend-nuxt.qrinef.ru](https://crm-frontend-nuxt.qrinef.ru)
+> This demo app is deployed at <a href="https://crm-frontend-nuxt.qrinef.ru" target="_blank">crm-frontend-nuxt.qrinef.ru</a>
 
 ## Installation
 
