@@ -47,7 +47,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth-next'
   ],
   /*
   ** Axios module configuration
@@ -63,9 +63,7 @@ export default {
     localStorage: false,
     strategies: {
       local: {
-        _scheme: 'refresh',
-        autoRefresh: true,
-        autoLogout: true,
+        scheme: 'refresh',
         endpoints: {
           login: { url: '/auth/login', method: 'post' },
           refresh: { url: '/auth/refresh', method: 'post' },
