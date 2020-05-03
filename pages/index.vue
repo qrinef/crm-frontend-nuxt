@@ -1,16 +1,16 @@
 <template>
   <el-main>
     <el-scrollbar class="steps__items" view-class="steps__scrollbar__view">
-      <div v-for="step in steps" :key="step.key" class="steps__item">
-        {{ step.label }}
+      <div v-for="step in items" :key="step.id" class="steps__item">
+        {{ step.name }}
 
         <el-scrollbar class="orders__items" view-class="orders__scrollbar__view">
           <draggable v-bind="dragOptions">
             <transition-group>
-              <div v-for="order in step.orders" :key="order.key" class="orders__item" :class="`m-${order.status.id}`">
+              <div v-for="order in step.orders" :key="order.id" class="orders__item" :class="`m-${order.status.id}`">
                 <el-row type="flex" class="orders__name-status">
                   <el-col class="orders__name">
-                    {{ order.label }}
+                    {{ order.name }}
                   </el-col>
                   <el-col class="orders__status">
                     <div class="orders__button">
@@ -27,7 +27,7 @@
                   </el-col>
                 </el-row>
                 <div class="orders_client">
-                  {{ order.client }}
+                  {{ order.client.fullName }}
                 </div>
               </div>
             </transition-group>
@@ -121,58 +121,31 @@
 </style>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
-
-function getRandomInt (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
 
 export default {
   name: 'Home',
   components: {
     draggable
   },
-  data () {
-    const av = [20, 3, 6, 1, 15, 5, 3, 7, 2, 10]
-
-    const generateData = (_) => {
-      const data = []
-      let y = 0
-
-      for (const [i, st] of av.entries()) {
-        const orders = []
-        for (let x = 1; x <= st; x++) {
-          y++
-          orders.push({
-            key: y,
-            label: `Order №${y}`,
-            client: 'Cullough Lina Kenyon',
-            status: { id: getRandomInt(1, 3), name: 'In progress' },
-            price: '$ 2300',
-            date: '2020-01-01'
-          })
-        }
-
-        data.push({
-          key: i + 1,
-          label: `Step ${i + 1}`,
-          orders
-        })
-      }
-
-      return data
-    }
-    return {
-      steps: generateData()
-    }
-  },
   computed: {
+    ...mapGetters('orders', ['items']),
     dragOptions () {
       return {
         animation: 200,
         group: 'orders'
       }
     }
+  },
+  watch: {
+    $route: 'setItems'
+  },
+  created () {
+    this.setItems()
+  },
+  methods: {
+    ...mapActions('orders', ['setItems'])
   }
 }
 </script>
