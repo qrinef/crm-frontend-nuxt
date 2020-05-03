@@ -3,7 +3,7 @@
     <el-aside class="aside" width="70px">
       <div class="aside__container">
         <div class="aside__logo">
-          <i class="el-icon-s-marketing" />
+          <img src="~assets/images/logo.svg" alt="">
         </div>
 
         <el-menu class="aside_menu" :router="true" :default-active="$route.path">
@@ -31,16 +31,16 @@
 
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
-        <el-menu mode="horizontal">
-          <el-menu-item @click="setRefresh">
-            <i class="el-icon-tickets" />
-            <span>Activity</span>
-          </el-menu-item>
-          <el-menu-item @click="drawer = true">
-            <i class="el-icon-setting" />
-            <span>Settings</span>
-          </el-menu-item>
-        </el-menu>
+        <!--        <el-menu mode="horizontal">-->
+        <!--          <el-menu-item @click="setRefresh">-->
+        <!--            <i class="el-icon-tickets" />-->
+        <!--            <span>Activity</span>-->
+        <!--          </el-menu-item>-->
+        <!--          <el-menu-item @click="drawer = true">-->
+        <!--            <i class="el-icon-setting" />-->
+        <!--            <span>Settings</span>-->
+        <!--          </el-menu-item>-->
+        <!--        </el-menu>-->
       </el-header>
 
       <nuxt />
@@ -104,7 +104,10 @@ export default {
   height: 60px;
   background: #fff;
   text-align: center;
-  border-bottom: solid 1px #e6e6e6;
+}
+.aside__logo img {
+  width: 50px;
+  margin-top: 15px;
 }
 .aside__logo i {
   font-size: 34px;
