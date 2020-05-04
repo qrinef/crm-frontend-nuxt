@@ -7,7 +7,9 @@
       <el-main v-loading="isLoading">
         <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
           <div v-for="stage in items" :key="stage.id" class="steps__item">
-            {{ stage.name }}
+            <div style="margin: 0 10px 10px;">
+              {{ stage.name }}
+            </div>
 
             <el-scrollbar class="orders__items" wrap-style="height: auto;">
               <draggable v-bind="dragOptions">
