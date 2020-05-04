@@ -1,5 +1,5 @@
 <template>
-  <el-main>
+  <el-main v-loading="isLoading">
     <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
       <div v-for="stage in items" :key="stage.id" class="steps__item">
         {{ stage.name }}
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
 
 export default {
@@ -48,6 +48,7 @@ export default {
     draggable
   },
   computed: {
+    ...mapState('orders', ['isLoading']),
     ...mapGetters('orders', ['items']),
     dragOptions () {
       return {
