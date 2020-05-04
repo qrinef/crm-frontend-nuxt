@@ -1,52 +1,69 @@
 <template>
-  <el-main v-loading="isLoading">
-    <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
-      <div v-for="stage in items" :key="stage.id" class="steps__item">
-        {{ stage.name }}
+  <layout-container>
+    <template #menu>
+      <header-menu :items="navs" />
+    </template>
+    <template #body>
+      <el-main v-loading="isLoading">
+        <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
+          <div v-for="stage in items" :key="stage.id" class="steps__item">
+            {{ stage.name }}
 
-        <el-scrollbar class="orders__items" wrap-style="height: auto;">
-          <draggable v-bind="dragOptions">
-            <transition-group>
-              <div v-for="order in stage.orders" :key="order.id" class="orders__item" :class="`m-${order.status.id}`">
-                <el-row type="flex" class="orders__name-status">
-                  <el-col class="orders__name">
-                    {{ order.name }}
-                  </el-col>
-                  <el-col class="orders__status">
-                    <div class="orders__button">
-                      {{ order.status.name }}
+            <el-scrollbar class="orders__items" wrap-style="height: auto;">
+              <draggable v-bind="dragOptions">
+                <transition-group>
+                  <div v-for="order in stage.orders" :key="order.id" class="orders__item" :class="`m-${order.status.id}`">
+                    <el-row type="flex" class="orders__name-status">
+                      <el-col class="orders__name">
+                        {{ order.name }}
+                      </el-col>
+                      <el-col class="orders__status">
+                        <div class="orders__button">
+                          {{ order.status.name }}
+                        </div>
+                      </el-col>
+                    </el-row>
+                    <el-row type="flex" class="orders__date-price">
+                      <el-col class="orders__date">
+                        {{ order.date }}
+                      </el-col>
+                      <el-col class="orders_price">
+                        {{ order.price }}
+                      </el-col>
+                    </el-row>
+                    <div class="orders_client">
+                      {{ order.client.fullName }}
                     </div>
-                  </el-col>
-                </el-row>
-                <el-row type="flex" class="orders__date-price">
-                  <el-col class="orders__date">
-                    {{ order.date }}
-                  </el-col>
-                  <el-col class="orders_price">
-                    {{ order.price }}
-                  </el-col>
-                </el-row>
-                <div class="orders_client">
-                  {{ order.client.fullName }}
-                </div>
-              </div>
-            </transition-group>
-          </draggable>
+                  </div>
+                </transition-group>
+              </draggable>
+            </el-scrollbar>
+          </div>
         </el-scrollbar>
-      </div>
-    </el-scrollbar>
-  </el-main>
+      </el-main>
+    </template>
+  </layout-container>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import draggable from 'vuedraggable'
+import HeaderMenu from '@/components/HeaderMenu.vue'
 
 export default {
   name: 'Home',
   components: {
-    draggable
+    draggable,
+    HeaderMenu
   },
+  data: () => ({
+    navs: [
+      {
+        name: 'Orders',
+        to: '/'
+      }
+    ]
+  }),
   computed: {
     ...mapState('orders', ['isLoading']),
     ...mapGetters('orders', ['items']),

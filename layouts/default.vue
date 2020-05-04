@@ -29,22 +29,7 @@
       </div>
     </el-aside>
 
-    <el-container style="height: 100vh;">
-      <el-header>
-        <!--        <el-menu mode="horizontal">-->
-        <!--          <el-menu-item @click="setRefresh">-->
-        <!--            <i class="el-icon-tickets" />-->
-        <!--            <span>Activity</span>-->
-        <!--          </el-menu-item>-->
-        <!--          <el-menu-item @click="drawer = true">-->
-        <!--            <i class="el-icon-setting" />-->
-        <!--            <span>Settings</span>-->
-        <!--          </el-menu-item>-->
-        <!--        </el-menu>-->
-      </el-header>
-
-      <nuxt />
-    </el-container>
+    <nuxt />
 
     <el-drawer
       title="I am the title"
@@ -57,15 +42,11 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   data () {
     return {
       drawer: false
     }
-  },
-  methods: {
-    ...mapActions('login', ['setRefresh'])
   }
 }
 </script>
