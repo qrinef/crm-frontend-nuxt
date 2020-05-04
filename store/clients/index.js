@@ -19,6 +19,8 @@ export const mutations = {
 
 export const actions = {
   async setItems ({ commit }) {
+    commit('resetState')
+
     const res = await this.$axios.$get('clients')
 
     commit('setItems', res)
