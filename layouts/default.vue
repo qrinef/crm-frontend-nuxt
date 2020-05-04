@@ -30,7 +30,7 @@
     </el-aside>
 
     <el-container style="height: 100vh;">
-      <el-header style="text-align: right; font-size: 12px">
+      <el-header>
         <!--        <el-menu mode="horizontal">-->
         <!--          <el-menu-item @click="setRefresh">-->
         <!--            <i class="el-icon-tickets" />-->
@@ -131,5 +131,21 @@ export default {
 .aside__item.is-active {
   background-color: #58a780;
   color: #fff;
+}
+.el-header {
+  position: relative;
+  text-align: right;
+  font-size: 12px;
+}
+.el-header:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  left: 0;
+  bottom: -10px;
+  z-index: 1;
+  box-shadow: inset 0 10px 12px -12px rgba(0, 0, 0, 0.3);
 }
 </style>
