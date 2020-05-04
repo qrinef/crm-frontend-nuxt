@@ -1,13 +1,13 @@
 <template>
   <el-main>
-    <el-scrollbar class="steps__items" view-class="steps__scrollbar__view">
-      <div v-for="step in items" :key="step.id" class="steps__item">
-        {{ step.name }}
+    <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
+      <div v-for="stage in items" :key="stage.id" class="steps__item">
+        {{ stage.name }}
 
-        <el-scrollbar class="orders__items" view-class="orders__scrollbar__view">
+        <el-scrollbar class="orders__items" wrap-style="height: auto;">
           <draggable v-bind="dragOptions">
             <transition-group>
-              <div v-for="order in step.orders" :key="order.id" class="orders__item" :class="`m-${order.status.id}`">
+              <div v-for="order in stage.orders" :key="order.id" class="orders__item" :class="`m-${order.status.id}`">
                 <el-row type="flex" class="orders__name-status">
                   <el-col class="orders__name">
                     {{ order.name }}
@@ -38,37 +38,53 @@
   </el-main>
 </template>
 
-<style>
-  .el-main {
-    background: #EDEDED;
-    height: calc(100vh - 60px);
-  }
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import draggable from 'vuedraggable'
 
-  .steps__items {
-    height: 100%;
+export default {
+  name: 'Home',
+  components: {
+    draggable
+  },
+  computed: {
+    ...mapGetters('orders', ['items']),
+    dragOptions () {
+      return {
+        animation: 200,
+        group: 'orders'
+      }
+    }
+  },
+  watch: {
+    $route: 'setItems'
+  },
+  created () {
+    this.setItems()
+  },
+  methods: {
+    ...mapActions('orders', ['setItems'])
   }
+}
+</script>
+
+<style>
   .steps__item {
     width: 250px;
+    flex: 0 0 auto;
     margin-right: 18px;
     margin-bottom: 18px;
   }
-  .steps__scrollbar__view {
-    display: flex;
-    height: 100%;
-  }
-  .steps__scrollbar__view > * {
-    flex: 0 0 auto;
-  }
 
   .orders__items {
-    height: calc(100% - 20px);
+    display: grid;
+    height: calc(100% - 22px);
     background: #E8E8E8;
-    padding: 8px;
     border-radius: 5px;
   }
   .orders__item {
     position: relative;
-    margin-bottom: 8px;
+    margin: 8px;
     background: #fff;
     border-radius: 3px;
     padding: 10px 10px 10px 18px;
@@ -111,41 +127,4 @@
   .m-3:before, .m-3 .orders__button {
     background: #78B497;
   }
-  .orders__scrollbar__view {
-    max-height: calc(100% - 20px);
-  }
-
-  .el-scrollbar__bar {
-    /*opacity: 1;*/
-  }
 </style>
-
-<script>
-import { mapGetters, mapActions } from 'vuex'
-import draggable from 'vuedraggable'
-
-export default {
-  name: 'Home',
-  components: {
-    draggable
-  },
-  computed: {
-    ...mapGetters('orders', ['items']),
-    dragOptions () {
-      return {
-        animation: 200,
-        group: 'orders'
-      }
-    }
-  },
-  watch: {
-    $route: 'setItems'
-  },
-  created () {
-    this.setItems()
-  },
-  methods: {
-    ...mapActions('orders', ['setItems'])
-  }
-}
-</script>

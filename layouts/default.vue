@@ -29,7 +29,7 @@
       </div>
     </el-aside>
 
-    <el-container>
+    <el-container style="height: 100vh;">
       <el-header style="text-align: right; font-size: 12px">
         <!--        <el-menu mode="horizontal">-->
         <!--          <el-menu-item @click="setRefresh">-->

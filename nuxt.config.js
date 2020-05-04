@@ -26,6 +26,7 @@ export default {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
+    '~assets/css/app.css',
     '~assets/css/fonts.css'
   ],
   /*
