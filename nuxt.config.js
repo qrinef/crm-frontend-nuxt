@@ -63,6 +63,7 @@ export default {
   auth: {
     plugins: ['@/plugins/auth.js'],
     localStorage: false,
+    resetOnError: true,
     strategies: {
       local: {
         scheme: 'refresh',
