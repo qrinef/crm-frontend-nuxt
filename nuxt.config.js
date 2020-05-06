@@ -64,6 +64,9 @@ export default {
     plugins: ['@/plugins/auth.js'],
     localStorage: false,
     resetOnError: true,
+    redirect: {
+      logout: '/login'
+    },
     strategies: {
       local: {
         scheme: 'refresh',
