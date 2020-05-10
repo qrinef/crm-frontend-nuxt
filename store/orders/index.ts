@@ -28,7 +28,6 @@ export default class Orders extends VuexModule {
   get orders () {
     return this.items.map(stage => ({
       ...stage,
-      id: 'd',
       orders: stage.orders.map((order: any) => ({
         ...order,
         name: `Order ${order.id}`,

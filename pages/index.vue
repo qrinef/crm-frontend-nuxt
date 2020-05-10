@@ -53,32 +53,32 @@ import draggable from 'vuedraggable'
 import { orders } from '~/store/orders'
 import HeaderMenu from '~/components/HeaderMenu.vue'
 
-  @Component({
-    components: {
-      HeaderMenu,
-      draggable
-    }
-  })
+@Component({
+  components: {
+    HeaderMenu,
+    draggable
+  }
+})
 export default class Orders extends Vue {
-    @orders.State isLoading: any
-    @orders.Getter orders: any
-    @orders.Action setItems: any
+  @orders.State isLoading: any
+  @orders.Getter orders: any
+  @orders.Action setItems: any
 
-    navs = [
-      {
-        name: 'Orders',
-        to: '/'
-      }
-    ]
-
-    dragOptions = {
-      animation: 200,
-      group: 'orders'
+  navs = [
+    {
+      name: 'Orders',
+      to: '/'
     }
+  ]
 
-    created () {
-      return this.setItems()
-    }
+  dragOptions = {
+    animation: 200,
+    group: 'orders'
+  }
+
+  created () {
+    return this.setItems()
+  }
 }
 </script>
 
