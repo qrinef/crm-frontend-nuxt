@@ -6,7 +6,7 @@
     <template #body>
       <el-main v-loading="isLoading">
         <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
-          <div v-for="stage in items" :key="stage.id" class="steps__item">
+          <div v-for="stage in orders" :key="stage.id" class="steps__item">
             <div style="margin: 0 10px 10px;">
               {{ stage.name }}
             </div>
@@ -47,44 +47,38 @@
   </layout-container>
 </template>
 
-<script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import draggable from 'vuedraggable'
-import HeaderMenu from '@/components/HeaderMenu.vue'
+import { orders } from '~/store/orders'
+import HeaderMenu from '~/components/HeaderMenu.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    draggable,
-    HeaderMenu
-  },
-  data: () => ({
-    navs: [
+  @Component({
+    components: {
+      HeaderMenu,
+      draggable
+    }
+  })
+export default class Orders extends Vue {
+    @orders.State isLoading: any
+    @orders.Getter orders: any
+    @orders.Action setItems: any
+
+    navs = [
       {
         name: 'Orders',
         to: '/'
       }
     ]
-  }),
-  computed: {
-    ...mapState('orders', ['isLoading']),
-    ...mapGetters('orders', ['items']),
-    dragOptions () {
-      return {
-        animation: 200,
-        group: 'orders'
-      }
+
+    dragOptions = {
+      animation: 200,
+      group: 'orders'
     }
-  },
-  watch: {
-    $route: 'setItems'
-  },
-  created () {
-    this.setItems()
-  },
-  methods: {
-    ...mapActions('orders', ['setItems'])
-  }
+
+    created () {
+      return this.setItems()
+    }
 }
 </script>
 

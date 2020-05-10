@@ -17,34 +17,30 @@
   </layout-container>
 </template>
 
-<script>
-import { mapState, mapActions } from 'vuex'
-import HeaderMenu from '@/components/HeaderMenu.vue'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import { users } from '~/store/users'
+import HeaderMenu from '~/components/HeaderMenu.vue'
 
-export default {
-  name: 'Users',
-  components: {
-    HeaderMenu
-  },
-  data: () => ({
-    navs: [
+  @Component({
+    components: {
+      HeaderMenu
+    }
+  })
+export default class Users extends Vue {
+    @users.State isLoading: any
+    @users.State items: any
+    @users.Action setItems: any
+
+    navs = [
       {
         name: 'Users',
         to: '/users'
       }
     ]
-  }),
-  computed: {
-    ...mapState('users', ['isLoading', 'items'])
-  },
-  watch: {
-    $route: 'setItems'
-  },
-  created () {
-    this.setItems()
-  },
-  methods: {
-    ...mapActions('users', ['setItems'])
-  }
+
+    created () {
+      return this.setItems()
+    }
 }
 </script>

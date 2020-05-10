@@ -6,15 +6,12 @@
   </el-menu>
 </template>
 
-<script>
-export default {
-  name: 'HeaderMenu',
-  props: {
-    items: {
-      type: Array,
-      required: true
-    }
-  }
+<script lang="ts">
+import { Component, Vue, Prop } from 'nuxt-property-decorator'
+
+@Component
+export default class HeaderMenu extends Vue {
+    @Prop(Array) readonly items: [] | undefined
 }
 </script>
 

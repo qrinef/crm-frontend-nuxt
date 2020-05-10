@@ -33,14 +33,14 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/axios-accessor'
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxt/typescript-build'
   ],
   /*
   ** Nuxt.js modules
