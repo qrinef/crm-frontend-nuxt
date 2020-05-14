@@ -55,8 +55,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.API_URL,
-    credentials: true
+    baseURL: process.env.API_URL || 'https://crm-backend-nest.qrinef.ru'
   },
 
   auth: {
