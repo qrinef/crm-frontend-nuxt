@@ -25,9 +25,7 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css',
-    '~assets/css/app.css',
-    '~assets/css/fonts.css'
+    '~assets/css/app.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -40,6 +38,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/stylelint-module',
     '@nuxt/typescript-build'
   ],
   /*
@@ -87,11 +86,16 @@ export default {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+    babel: {
+      plugins: [
+        [
+          'component',
+          {
+            libraryName: 'element-ui',
+            styleLibraryName: 'theme-chalk'
+          }
+        ]
+      ]
     }
   }
 }

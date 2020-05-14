@@ -13,7 +13,7 @@
             <el-input v-model="login.password" show-password />
           </el-form-item>
           <el-form-item class="auth_item" :error="isError">
-            <el-button class="auth_button" style="width: 100%" @click="setForm">
+            <el-button class="auth_button" style="width: 100%;" @click="setForm">
               Log in
             </el-button>
           </el-form-item>
@@ -71,43 +71,51 @@ export default {
 
 <style>
   .auth {
-    background: #EDEDED;
+    background: #ededed;
   }
+
   .auth__row {
     margin: 0 auto;
   }
+
   .auth__form {
     width: 420px;
     padding: 32px;
     background-color: #fff;
     border-radius: 5px;
   }
+
   .auth__title {
     text-align: center;
     margin-bottom: 5px;
     font-size: 24px;
     font-weight: 600;
     line-height: 30px;
-    color: #3E3E3E;
+    color: #3e3e3e;
   }
+
   .auth_item:last-child {
     margin-bottom: 0;
   }
+
   .auth_item label {
     line-height: normal;
   }
+
   .auth_item input:focus {
-    border-color: #22A898
+    border-color: #22a898;
   }
+
   .auth_button {
-    background: #22A898;
+    background: #22a898;
     color: #fff;
     font-weight: 600;
     border: 0;
   }
+
   .auth_button:focus,
   .auth_button:hover {
-    background: #1F8175;
+    background: #1f8175;
     color: #fff;
   }
 </style>

@@ -1,8 +1,5 @@
 <template>
-  <layout-container>
-    <template #menu>
-      <header-menu :items="navs" />
-    </template>
+  <layout-container :navs="navs">
     <template #body>
       <el-main v-loading="isLoading">
         <el-scrollbar style="display: flex; height: 100%;" view-style="display: flex; height: 100%;" wrap-style="height: auto;">
@@ -93,9 +90,10 @@ export default class Orders extends Vue {
   .orders__items {
     display: grid;
     height: calc(100% - 22px);
-    background: #E8E8E8;
+    background: #e8e8e8;
     border-radius: 5px;
   }
+
   .orders__item {
     position: relative;
     margin: 8px;
@@ -103,7 +101,8 @@ export default class Orders extends Vue {
     border-radius: 3px;
     padding: 10px 10px 10px 18px;
   }
-  .orders__item:before {
+
+  .orders__item::before {
     content: '';
     display: block;
     position: absolute;
@@ -112,33 +111,44 @@ export default class Orders extends Vue {
     top: 0;
     left: 0;
   }
+
   .orders__name {
     font-weight: 600;
   }
+
   .orders__status {
     text-align: right;
   }
+
   .orders__button {
     display: inline-block;
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 2px;
   }
+
   .orders__date-price {
     font-weight: 300;
     font-size: 12px;
     margin: 8px 0;
   }
+
   .orders_price {
     text-align: right;
   }
-  .m-1:before, .m-1 .orders__button {
-    background: #FEAC92;
+
+  .m-1::before,
+  .m-1 .orders__button {
+    background: #feac92;
   }
-  .m-2:before, .m-2 .orders__button {
-    background: #8DD5F3;
+
+  .m-2::before,
+  .m-2 .orders__button {
+    background: #8dd5f3;
   }
-  .m-3:before, .m-3 .orders__button {
-    background: #78B497;
+
+  .m-3::before,
+  .m-3 .orders__button {
+    background: #78b497;
   }
 </style>

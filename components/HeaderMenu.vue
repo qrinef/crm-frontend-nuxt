@@ -16,13 +16,12 @@ export default class HeaderMenu extends Vue {
 </script>
 
 <style>
-  .menu {
-  }
   .menu__item {
-    color: #545454!important;
+    color: #545454 !important;
     font-size: 18px;
   }
+
   .menu__item.is-active {
-    border-bottom: 0!important;
+    border-bottom: 0 !important;
   }
 </style>

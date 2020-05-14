@@ -1,8 +1,5 @@
 <template>
-  <layout-container>
-    <template #menu>
-      <header-menu :items="navs" />
-    </template>
+  <layout-container :navs="navs">
     <template #body>
       <el-main>
         <el-table v-loading="isLoading" :data="items">
