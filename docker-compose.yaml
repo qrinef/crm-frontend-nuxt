@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    image: registry.gitlab.com/qrinef/crm-frontend-nuxt:latest
+    image: docker.pkg.github.com/qrinef/crm-frontend-nuxt/crm-frontend-nuxt:latest
     container_name: crm-frontend-nuxt
     expose:
       - 3000
