@@ -24,7 +24,8 @@ const config: Configuration = {
   ],
 
   plugins: [
-    '@/plugins/element-ui',
+    '@/plugins/ui-element',
+    '@/plugins/ui-layout',
     '@/plugins/axios-accessor'
   ],
 

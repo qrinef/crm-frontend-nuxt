@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import {
   Container,
   Header,
@@ -20,7 +21,6 @@ import {
   Message,
   MessageBox
 } from 'element-ui'
-import LayoutContainer from '@/components/LayoutContainer.vue'
 
 Vue.component(Container.name, Container)
 Vue.component(Header.name, Header)
@@ -44,5 +44,3 @@ Vue.use(Loading.directive)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$message = Message
-
-Vue.component('LayoutContainer', LayoutContainer)
