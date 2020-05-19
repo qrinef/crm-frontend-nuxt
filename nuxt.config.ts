@@ -1,10 +1,9 @@
-require('dotenv').config()
+import { Configuration } from '@nuxt/types'
+import 'dotenv/config'
 
-export default {
+const config: Configuration = {
   mode: 'spa',
-  /*
-  ** Headers of the page
-  */
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -17,43 +16,29 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
+
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+
   css: [
     '~assets/css/app.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
+
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios-accessor'
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
+
   buildModules: [
     '@nuxtjs/stylelint-module',
     '@nuxt/typescript-build'
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'nuxt-dayjs-module'
   ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+
   axios: {
     baseURL: process.env.API_URL || 'https://crm-backend-nest.qrinef.ru'
   },
@@ -81,9 +66,7 @@ export default {
   router: {
     middleware: ['auth']
   },
-  /*
-  ** Build configuration
-  */
+
   build: {
     babel: {
       plugins: [
@@ -98,3 +81,5 @@ export default {
     }
   }
 }
+
+export default config
