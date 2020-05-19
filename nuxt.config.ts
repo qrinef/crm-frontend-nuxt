@@ -67,6 +67,12 @@ const config: Configuration = {
     middleware: ['auth']
   },
 
+  typescript: {
+    typeCheck: {
+      eslint: true
+    }
+  },
+
   build: {
     babel: {
       plugins: [
