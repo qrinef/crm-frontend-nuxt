@@ -45,7 +45,7 @@ const config: Configuration = {
   },
 
   auth: {
-    plugins: ['@/plugins/auth.js'],
+    plugins: ['@/plugins/auth.ts'],
     localStorage: false,
     resetOnError: true,
     redirect: {
