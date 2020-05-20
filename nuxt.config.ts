@@ -91,7 +91,7 @@ const config: Configuration = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    'nuxt-dayjs-module'
+    '@nuxtjs/dayjs'
   ],
 
   axios: {
