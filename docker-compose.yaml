@@ -9,6 +9,7 @@ services:
     environment:
       VIRTUAL_HOST: crm-frontend-nuxt.qrinef.ru
       VIRTUAL_PORT: 3000
+      NUXT_HOST: 0.0.0.0
 
 networks:
   default:
